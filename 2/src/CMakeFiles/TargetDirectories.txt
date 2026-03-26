@@ -1,0 +1,7 @@
+/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/CMakeFiles/BaseFile.dir
+/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/CMakeFiles/test_basefile.dir
+/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/CMakeFiles/test_rlefile.dir
+/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/CMakeFiles/test_rlefile2.dir
+/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/CMakeFiles/test.dir
+/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/CMakeFiles/edit_cache.dir
+/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/CMakeFiles/rebuild_cache.dir

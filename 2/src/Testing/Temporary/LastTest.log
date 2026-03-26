@@ -1,0 +1,48 @@
+Start testing: Mar 24 15:23 MSK
+----------------------------------------------------------
+1/3 Testing: test_basefile
+1/3 Test: test_basefile
+Command: "/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/test_basefile"
+Directory: /Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src
+"test_basefile" start time: Mar 24 15:23 MSK
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"test_basefile" end time: Mar 24 15:23 MSK
+"test_basefile" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/3 Testing: test_rlefile
+2/3 Test: test_rlefile
+Command: "/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/test_rlefile"
+Directory: /Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src
+"test_rlefile" start time: Mar 24 15:23 MSK
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"test_rlefile" end time: Mar 24 15:23 MSK
+"test_rlefile" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/3 Testing: test_rlefile2
+3/3 Test: test_rlefile2
+Command: "/Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src/test_rlefile2"
+Directory: /Users/a1234/Desktop/учеба/2сем/СД/СДлабы/2/src
+"test_rlefile2" start time: Mar 24 15:23 MSK
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"test_rlefile2" end time: Mar 24 15:23 MSK
+"test_rlefile2" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 24 15:23 MSK

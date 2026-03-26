@@ -1,0 +1,7 @@
+test_basefile 1 0
+test_rlefile 1 0
+test_rlefile2 1 0
+---
+test_basefile
+test_rlefile
+test_rlefile2
