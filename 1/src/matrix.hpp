@@ -5,11 +5,12 @@ class Matrix
 private:
     int rows;
     int cols;
-    double** data;
+    double **data;
+
 public:
     Matrix(int n);
     Matrix(int n, int m, double fillValue = 0);
-    Matrix(const Matrix& other);
+    Matrix(const Matrix &other);
 
     ~Matrix();
 
@@ -24,4 +25,19 @@ public:
     Matrix multiply(Matrix &other);
 
     void printMatrix();
+
+    Matrix &operator=(const Matrix &a);
+    Matrix &operator+=(const Matrix &a);
+    Matrix &operator-=(const Matrix &a);
+    Matrix &operator*=(double a);
+    Matrix &operator/=(double a);
+    Matrix operator+(const Matrix &a) const;
+    Matrix operator-(const Matrix &a) const;
+    Matrix operator*(const Matrix &a) const;
+    Matrix operator*(double a) const;
+    Matrix operator/(double a) const;
+    
 };
+
+Matrix operator*(double a, const Matrix& b);
+Matrix operator-(const Matrix& a);
