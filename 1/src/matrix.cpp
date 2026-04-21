@@ -165,14 +165,9 @@ Matrix& Matrix::operator+=(const Matrix &a)
 
 Matrix& Matrix::operator-=(const Matrix &a)
 {
-    if (rows != a.rows || cols != a.cols){
-        throw std::invalid_argument("Размеры матриц должны совпадать");
-    }
-    for (int i = 0; i < rows; i++){
-        for (int j = 0; j < cols; j++){
-            data[i][j] -= a.data[i][j];
-        }
-    }
+    negate();
+    *this += a;
+    negate();
     return *this;
 }
 

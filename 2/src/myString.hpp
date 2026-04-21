@@ -43,7 +43,7 @@ public:
     bool operator>(const char* str) const;
     bool operator>=(const char* str) const;
 
-    char& operator[](int index);
+    char& operator[](size_t ndex) const;
 };
 myString operator+(const char* str, const myString& s);
 

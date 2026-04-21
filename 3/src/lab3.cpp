@@ -21,8 +21,11 @@
 #include "../../2/src/myString.hpp"
 #include "../../1/src/matrix.hpp"
 #include "shortArray.hpp"
+#include "workerDb.hpp"
+#include "boolArray.hpp"
 
-int main() {
+int main() 
+{
 
     /**
      * Задание 1. Перегрузка операторов.
@@ -102,7 +105,8 @@ int main() {
      * Ваши операторы должны работать в следующем блоке кода.
      */
 
-     /*{
+     /*
+     try {
         Matrix m1(4), m2(4, 4, 1);
         std::cout<<"Исходная матрица m1"<<std::endl;
         m1.printMatrix();
@@ -126,7 +130,13 @@ int main() {
         std::cout<<"Матрица m2 после деления на 3"<<std::endl;
         m2.printMatrix();
         std::cout<<'\n';
-    }*/
+    } catch (const std::invalid_argument& e) {
+    std::cout << "Ошибка: " << e.what() << std::endl;
+        
+    */
+    /*myString a("abc");
+    a += a;
+    a.print();*/
 
     /**
      * Задание 1.2.2. Бинарные операторы.
@@ -140,7 +150,8 @@ int main() {
      * новое значение.
      */
 
-    /*{
+    /*
+    try {
         Matrix m1(4), m2(4, 4, 1);
         std::cout<<"Исходная матрица m1"<<std::endl;
         m1.printMatrix();
@@ -152,7 +163,10 @@ int main() {
         std::cout<<"Матрица m3"<<std::endl;
         m3.printMatrix();
         std::cout<<'\n';
-    }*/
+    } catch (const std::invalid_argument& e) {
+    std::cout << "Ошибка: " << e.what() << std::endl;
+        
+    */
 
     /**
      * Задание 1.2.3. Перегрузка глобальными функциями.
@@ -275,13 +289,13 @@ int main() {
      *
      * 
      */
-    /*
-    myString path("/home/user/file");
+    
+    /*myString path("/home/user/file");
     myString newPath = addTxtExtension(path);
     
     std::cout << path << std::endl;     
-    std::cout << newPath << std::endl; 
-    */
+    std::cout << newPath << std::endl; */
+    
     /**
      * Задание 3. Объединения и битовые поля.
      */
@@ -348,7 +362,7 @@ int main() {
      * хранения памяти.
      */
 
-    {
+    /*{
         short data1[] = {1,2,3,4};
         short data2[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
         
@@ -375,7 +389,7 @@ int main() {
         
 
 
-    }
+    }*/
 
     /**
      * Задание 3.3. Выравнивание и битовые поля.
@@ -414,13 +428,13 @@ int main() {
      * Используйте для хранения строковых данных ваш класс MyString.
      */
 
-    /* {
+     /*{
         WorkerDb db;
-        db["Ivanov"] = WorkerData("Ivan", 34, ...);
-        db["Petrov"] = WorkerData("Petr", 43, ...);
+        db["Ivanov"] = WorkerData("Ivan", 34, "junior", 1000);
+        db["Petrov"] = WorkerData("Petr", 43, "senior", 5000);
         std::cout << "Ivanov's name = " << db["Ivanov"].name << "\n";
         std::cout << "Petrov's age = " << db["Petrov"].age << "\n";
-    } */
+    }*/
 
     /**
      * Задание 4.2. Итератор.
@@ -464,10 +478,10 @@ int main() {
      * Проверьте ниже работу итератора.
      */
 
-    /* {
+     /*{
         WorkerDb db;
-        db["Ivanov"] = WorkerData("Ivan", 34, ...);
-        db["Petrov"] = WorkerData("Petr", 43, ...);
+        db["Ivanov"] = WorkerData("Ivan", 34, "junior", 1000);
+        db["Petrov"] = WorkerData("Petr", 43, "senior", 5000);
         for (auto it = db.begin(); it != db.end(); ++it)
         {
             std::cout << it.key() << " -> " << it->name << '\n';
@@ -484,9 +498,20 @@ int main() {
      * `WorkerDb`.
      */
 
-    {
+    /*{
+         WorkerDb db;
+        
+        db["Ivanov"] = WorkerData("Ivan", 34, "Programmer", 50000);
+        db["Petrov"] = WorkerData("Petr", 43, "Analyst", 45000);
+        db["Sidorova"] = WorkerData("Anna", 28, "Manager", 55000);
+        db["Kuznetsov"] = WorkerData("Alex", 30, "Designer", 48000);
 
-    }
+        std::cout << "Печать базы данных:" << std::endl;
+        printDb(db);
+        
+        double avgAge = getAvgAge(db);
+        std::cout << "\nСредний возраст сотрудников: " << avgAge << " лет" << std::endl;
+    }*/
 
     /**
      * Задание 6. Оператор неявного приведения типа.
@@ -503,7 +528,7 @@ int main() {
      * Класс должен поддерживать следующее поведение:
      */
 
-    /* {
+    
         /// Создается массив из 10 значений false
         BoolArray ar1(10);
 
@@ -521,7 +546,7 @@ int main() {
 
         /// Выведем массив на печать
         std::cout << "[";
-        for (int i = 0; i < ar1.size(); ++i) {
+        for (int i = 0; i < ar1.getSize(); ++i) {
             if (i > 0) std::cout << ", ";
             std::cout << ar1[i];
         }
@@ -529,7 +554,7 @@ int main() {
 
         /// Выведем массив на печать по-другому
         std::cout << "[";
-        for (int i = 0, printed = 0; i < ar1.size(); ++i) {
+        for (int i = 0, printed = 0; i < ar1.getSize(); ++i) {
             if (ar1[i]) {
                 if (printed > 0) std::cout << ", ";
                 printed++;
@@ -537,23 +562,19 @@ int main() {
             }
         }
         std::cout << "]\n";
-
+    
 
        /// Метод `resize` изменяет размер массива. Если новый размер больше, то
        /// новые значения дополняются заданным значением (по умолчанию false). Если
        /// новый размер меньше, то конец массива отбрасывается.
 
         ar1.resize(12, true);
-        /// выведите массив на печать
-
-        //...
+        print(ar1);
 
         ar1.resize(4, true);
-        /// выведите массив на печать снова
+        print(ar1);
 
-        //...
 
-    } */
 
 	return 0;
 }

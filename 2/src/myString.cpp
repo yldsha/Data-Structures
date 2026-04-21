@@ -125,7 +125,7 @@ myString& myString::operator=(const myString& a)
 }
 myString& myString::operator+=(const myString& a)
 {
-    if (this == &a) {
+    /*if (this == &a) {
         char* newData = new char[length * 2 + 1];
         for (int i = 0; i < length; i++) {
             newData[i] = data[i];
@@ -138,7 +138,7 @@ myString& myString::operator+=(const myString& a)
         data = newData;
         length *= 2;
         return *this;
-    }
+    }*/
     if (a.data == nullptr){
         return *this;
     }
@@ -268,7 +268,7 @@ bool operator>=(const char* str, const myString& s)
     return strcmp(str, s.getData()) >= 0;
 }
 
-char& myString::operator[](int index)
+char& myString::operator[](size_t index) const
 {
     if (index < 0 || index >= length) {
         throw std::out_of_range("Index out of range");
