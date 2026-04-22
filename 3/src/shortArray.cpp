@@ -7,10 +7,10 @@ ShortArray::ShortArray()
 }
 ShortArray::ShortArray(const short* array, size_t len)
 {
-    if (len <= 12) {
+    if (len <= 11) {
         setStaticMode(len);
         for (size_t i = 0; i < len; i++) {
-            small[i] = array[i];
+            bits.small[i] = array[i];
         }
     } else {
         setDynamicMode();
@@ -38,7 +38,7 @@ short& ShortArray::operator[](int i)
     if (isDynamic()) {
         return dynamic.ar[i];
     } else {
-        return small[i];
+        return bits.small[i];
     }
 }
 
@@ -58,10 +58,10 @@ void ShortArray::push(short new_val)
     }
     else
     {
-        size_t currentSize = getStaticSize();  // читаем через метод
-        if (currentSize < 12) {
-            small[currentSize] = new_val;
-            setStaticMode(currentSize + 1);    // записываем через метод
+        size_t currentSize = getStaticSize(); 
+        if (currentSize < 11) {
+            bits.small[currentSize] = new_val;
+            setStaticMode(currentSize + 1);    
         }
         else {
             convertToDynamic();
@@ -93,7 +93,7 @@ short ShortArray::pop(){
         if (currentSize == 0) {
             throw std::out_of_range("Cannot pop from empty array");
         }
-        short val = small[currentSize - 1];
+        short val = bits.small[currentSize - 1];
         setStaticMode(currentSize - 1);
         return val;
     }
@@ -127,10 +127,10 @@ void ShortArray::resize(size_t newSize, short fillValue)
     else
     {
         // Встроенный режим
-        if (newSize <= 12) {
+        if (newSize <= 11) {
             if (newSize > getStaticSize()) {
                 for (size_t i = getStaticSize(); i < newSize; i++) {
-                    small[i] = fillValue;
+                    bits.small[i] = fillValue;
                 }
             }
             setStaticMode(newSize);
@@ -157,7 +157,7 @@ void ShortArray::printAr()
     {
         for (int i = 0; i < getStaticSize(); i++)
         {
-            std::cout << small[i] << " ";
+            std::cout << bits.small[i] << " ";
         }
     }
     
@@ -174,7 +174,7 @@ void ShortArray::printAr()
     short* newAr = new short[newMemory];
     
     for (size_t i = 0; i < oldSize; i++) {
-        newAr[i] = small[i];
+        newAr[i] = bits.small[i];
     }
     
     dynamic.ar = newAr;

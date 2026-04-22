@@ -7,22 +7,23 @@ class ShortArray
 private:
     union {
         struct {            
-            short* ar;
-            size_t length;
-            size_t memory;
+            short* ar; 
+            size_t length; 
+            size_t memory; 
         } dynamic;
-        short small[12]; 
-        struct {
-            unsigned char size : 7;   // 7 битов для размера (0-12)
-            unsigned char flag : 1;   // 1 бит для флага (0=динамический, 1=статический)
+         struct {
+            short small[11];
+            unsigned char size : 7;   
+            unsigned char flag : 1;  
         } bits;
     };
-    bool isDynamic() const {return bits.flag == 0;}
-    void setDynamicMode() {bits.flag = 0;}
+    
+    
     void setStaticMode(size_t staticSize) {
         bits.flag = 1;
         bits.size = staticSize;
     }
+
     size_t getStaticSize() const {return bits.size;}
 public:
     ShortArray();
@@ -36,6 +37,9 @@ public:
     void resize(size_t newSize, short fillValue = 0);
     void printAr();
     void convertToDynamic();
+    void setMem(size_t newmemory){dynamic.memory = newmemory;}
+    void setDynamicMode() {bits.flag = 0;}
+    bool isDynamic() const {return bits.flag == 0;}
     
     
 };
