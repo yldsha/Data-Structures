@@ -7,10 +7,12 @@ int main()
     std::cout << "1. Создан пустой список" << std::endl;
     std::cout << "   Размер: " << myList.getSize() << std::endl << std::endl;
     
-    myList.pushBack(Circle(0, 0, 5));
-    myList.pushBack(Circle(1, 1, 3));
-    myList.pushBack(Circle(2, 2, 7));
-    printList(myList);
+    std::cout<<"-----"<<std::endl;
+    //myList.pushBack(Circle(Point(3,4), 5));
+    std::cout<<"-----"<<std::endl;
+    //myList.pushBack(Circle(1, 1, 3));
+    //myList.pushBack(Circle(2, 2, 7));
+    //printList(myList);
 
     myList.pushFront(Circle(10, 10, 2));
     printList(myList);

@@ -1,8 +1,9 @@
 #include "pointCircle.hpp"
 #include <iostream>
+#include <climits>
 
 List::List(){
-    head = nullptr;
+    head = new Node(Circle(0,0, __INT_MAX__));
     tail = nullptr;
     m_size = 0;
 }
@@ -13,20 +14,34 @@ List::~List(){
         delete temp;
     }
 }
+List& List::operator=(const List& other){
+    if (this != &other){
+        while (head != nullptr){
+            Node* tmp = head;
+            head = head->getNext();
+            delete tmp;
+        }
+        head = nullptr;
+        tail = nullptr;
+        m_size = 0;
+
+        Node* current = other.head;
+        while (current != nullptr){
+            this->pushBack(current->getData());
+            current = current->getNext();
+        }
+    }
+    return *this;
+}
 void List::pushFront(const Circle& data){
     Node* newNode = new Node(data);
-        if (head == nullptr){
-            head = newNode;
-            tail = newNode;
-        }
-        else{
-            newNode->setNext(head);
-            head->setPrev(newNode);
-            head = newNode;
-        }
+        newNode->setNext(head->getNext());
+        head->setNext(newNode);
+        newNode->setPrev(head);
         m_size++;
 }
 void List::pushBack(const Circle& data){
+    std::cout<<"pushBack"<<std::endl;
     Node* newNode = new Node(data);
     if (head == nullptr){
         head = newNode;

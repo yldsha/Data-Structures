@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <iostream>
 class Point 
 {
 private:
@@ -8,7 +9,7 @@ private:
 public:
     Point(){x = 0; y = 0;}
     Point(int newX, int newY){x = newX; y = newY;}
-    ~Point(){}
+    ~Point(){std::cout<<"~Point"<<std::endl;}
     int getX() const {return x;}
     int getY() const {return y;}
     void setX(int newX){x = newX;}
@@ -22,11 +23,13 @@ private:
     int radius;
 public:
     Circle(): center(0,0), radius(0){}
-    Circle(Point p, int r){center = p; radius = r;}
+    Circle(const Point& p, int r){center = p; radius = r; std::cout<<"Circle"<<std::endl;}
     Circle(int x, int y, int r){center = Point(x,y); radius = r;}
 
     Point getCenter() const { return center; }
     int getRadius() const { return radius; }
+    void setRadius(int newRadius){radius = newRadius;}
+    ~Circle(){}
 };
 
 class Node
@@ -67,6 +70,7 @@ class List
 public:
     List();
     ~List();
+    List& operator=(const List& other);
     
     void pushFront(const Circle& data);
     void pushBack(const Circle& data);
